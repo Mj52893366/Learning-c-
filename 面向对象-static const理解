@@ -8,6 +8,8 @@
 //class Date{
 //    int year,month,day;
 //    static int count;          //static  定义之后 属于一个类 并非成员变量  无论创建几个Date 都只有一个count;
+                                    const 的成员 只能由const的方法访问,
+                                    非const 只能由非const;
 //
 //public:
 //    static void showCount();    //方法加上static 则只能调用类中的static变量;
