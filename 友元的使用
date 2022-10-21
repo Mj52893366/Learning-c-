@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+class X;        //声明
+class Y{
+public:
+    void g(X *p);        //Y中的一个方法声明
+};
+class Z{
+public:
+    void f(X *p);         //Z中的一个方法声明
+};
+
+class X{
+    friend class Z;     //Z是X的友元类
+public:
+    X(int i);         //构造器
+    friend void Y::g(X *p);  //Y的这个方法是X的友元方法 所以可以对X的私有属性进行操作,或者调用X的方法
+    friend void h(X *p);
+    void add(int m = 0){
+        i = i +m;
+    }
+    void print();
+private:
+    int i;
+};
+X::X(int i ):i(i){}
+void X::print()
+{
+    cout<<i;
+}
+void h(X* x){
+    x->add(10);
+
+}
+void Y::g(X *p)
+{
+    p->add(1);
+}
+void Z::f(X *p)
+{
+    p->add(5);
+}
+
+
+
+int main(){
+    Y y;
+    Z z;
+    int num;cin>>num;
+    X x(num);
+    char a[20];cin>>a;
+    int len = strlen(a);
+    for (int i = 0; i < len; ++i)
+    {
+        if (a[i] == 'g')
+            y.g(&x);
+        else if (a[i] == 'f')
+            z.f(&x);
+        else if (a[i] == 'h')
+            h(&x);
+    }
+    x.print();
+}
