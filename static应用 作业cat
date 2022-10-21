@@ -19,9 +19,15 @@ int main()
         if (age < 0) break;
         cat[i++] = new Cat(age);
     }
-    cout<<"There are "<<cat[i]->getnumofcats()<<" cats"<<endl;
-    for (int j = 1; j <= cat[i]->getnumofcats(); ++j)
-    {
-        cout<<"cat"<<j<<" "<<cat[j]->getage()<<endl;
+    if (cat[i]->getnumofcats() == 1){
+        cout<<"Only "<<cat[i]->getnumofcats()<<" cat"<<endl;
+        cout<<"cat"<<" "<<cat[1]->getage()<<endl;
+    }
+    else{
+        cout<<"There are "<<cat[i]->getnumofcats()<<" cats"<<endl;
+        for (int j = 1; j <= cat[i]->getnumofcats(); ++j)
+        {
+            cout<<"cat"<<j<<" "<<cat[j]->getage()<<endl;
+        }
     }
 }
