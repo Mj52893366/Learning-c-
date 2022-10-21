@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+class Cat{
+public:
+    Cat(int age): age (age){    //构造器语法
+        numofcats++;}
+    static int getnumofcats(){return numofcats;}
+    ~Cat(){numofcats--;}      //释放
+    int getage(){return age;}
+private:
+    static int numofcats;
+    int age;
+};
+int Cat::numofcats=0;   //初始化静态变量
+int main()
+{
+    Cat *cat[10];int i = 1,age;
+    while (cin>>age){
+        if (age < 0) break;
+        cat[i++] = new Cat(age);
+    }
+    cout<<"There are "<<cat[i]->getnumofcats()<<" cats"<<endl;
+    for (int j = 1; j <= cat[i]->getnumofcats(); ++j)
+    {
+        cout<<"cat"<<j<<" "<<cat[j]->getage()<<endl;
+    }
+}
